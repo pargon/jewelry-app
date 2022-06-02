@@ -1,11 +1,16 @@
-import NavBar from "./components/NavBar";
+import './App.css';
+import RBsNavBar from './components/RBsNavBar';
+import ItemListContainer from './components/ItemListContainer';
 
-export default function App() {
+function App() {
   return (
     <>
-    <div>
-      <NavBar />
-    </div>
+    <RBsNavBar />   
+    <main className="mainGreeting">
+    <ItemListContainer greeting={"Hola Mundo"}/>
+    </main> 
     </>
   );
 }
+
+export default App;
