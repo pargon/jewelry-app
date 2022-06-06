@@ -18,7 +18,7 @@ function App() {
     <main className="mainGreeting">
     <ItemListContainer greeting={"Welcome to Jewelry"}/>
     </main> 
-    <ItemCount reqmin={1} stock={10} onAdd={onAdd} />
+    <ItemCount initial={1} stock={10} onAdd={onAdd} />
     </>
   );
 }
