@@ -1,14 +1,24 @@
 import './App.css';
 import RBsNavBar from './components/RBsNavBar';
 import ItemListContainer from './components/ItemListContainer';
+import ItemCount from './components/ItemCount';
+import {useState} from 'react';
 
 function App() {
+
+  const [valueCart, setValueCart] = useState();
+
+  const onAdd = (qtyReq)=>{
+    setValueCart(qtyReq);
+  };
+
   return (
     <>
-    <RBsNavBar />   
+    <RBsNavBar qtyReq={valueCart} />   
     <main className="mainGreeting">
-    <ItemListContainer greeting={"Hola Mundo"}/>
+    <ItemListContainer greeting={"Welcome to Jewelry"}/>
     </main> 
+    <ItemCount reqmin={1} stock={10} onAdd={onAdd} />
     </>
   );
 }

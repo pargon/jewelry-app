@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import CartWidget from "./CartWidget";
 
-function RBsNavBar() {
+function RBsNavBar({qtyReq}) {
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -16,7 +16,7 @@ function RBsNavBar() {
               <Nav.Link href="#catalogo">Ofertas</Nav.Link>
               <Nav.Link href="#catalogo">Contacto</Nav.Link>
             </Nav>
-            <CartWidget items={4}/>            
+            <CartWidget items={qtyReq}/>            
           </Navbar.Collapse>
         </Container>
       </Navbar>
