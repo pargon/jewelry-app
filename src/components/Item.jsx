@@ -1,7 +1,8 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-function Item({ item }) {
+function Item({ item }) {  
   return (
     <>
       <Card style={{ width: "18rem" }}>
