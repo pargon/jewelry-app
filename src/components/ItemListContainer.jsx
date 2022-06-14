@@ -31,20 +31,18 @@ const itemList = [
   },
 ];
 
-
 function ItemListContainer({ greeting }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState();
-  const data = new Promise((res, rej) => {
-
-    setTimeout(() => {
-      res(itemList);
-      // rej('mallll');
-    }, 2000);
-  });
 
   useEffect(() => {
+    const data = new Promise((res, rej) => {
+      setTimeout(() => {
+        res(itemList);
+        // rej('mallll');
+      }, 2000);
+    });
 
     data
       .then((res) => {
@@ -57,7 +55,7 @@ function ItemListContainer({ greeting }) {
       .finally(() => {
         setLoading(false);
       });
-  });
+  }, []);
 
   return (
     <>
