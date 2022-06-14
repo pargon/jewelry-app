@@ -4,7 +4,7 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemCount from './components/ItemCount';
 import {useState} from 'react';
-
+import TestEvents from './components/TestEvents';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <NavBar qtyReq={valueCart} />   
-    
+    <TestEvents></TestEvents>
     <main className="mainGreeting">
     <ItemListContainer greeting={"Welcome to Jewelry"}/>
     <ItemDetailContainer greeting={"Welcome2 to Jewelry"}/>
