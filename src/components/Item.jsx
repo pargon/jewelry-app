@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
-function Item({ item }) {
+function Item({ item }) {  
   return (
     <>
       <Card style={{ width: "18rem" }}>
