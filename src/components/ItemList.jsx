@@ -8,11 +8,9 @@ function ItemList({ items }) {
       <CardGroup>
         {items &&
           items.map((item) => (
-            <>
-              <Card key={item.id} style={{ width: "18rem" }}>
-                <Item item={item} />
-              </Card>
-            </>
+            <Card key={item.id} style={{ width: "18rem" }}>
+              <Item item={item} />
+            </Card>
           ))}
       </CardGroup>
     </>

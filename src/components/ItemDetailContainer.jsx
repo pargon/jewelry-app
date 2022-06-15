@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ItemDetail from "../components/ItemDetail";
+import ItemsDetail from "../repository/ItemsDetail";
 
 function ItemDetailContainer() {
   const { id } = useParams();
-
   const [result, setResult] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,8 @@ function ItemDetailContainer() {
 
     getItem
       .then((res) => {
-        setResult(res);
+        const item = ItemsDetail.getById(res);
+        setResult(item);        
       })
       .catch((error) => {
         setError(true);
@@ -37,7 +38,7 @@ function ItemDetailContainer() {
         {result && (
           <>
             <div>
-              <ItemDetail id={result}></ItemDetail>
+              <ItemDetail item={result}></ItemDetail>
             </div>
           </>
         )}
