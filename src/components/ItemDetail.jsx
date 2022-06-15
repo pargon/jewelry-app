@@ -1,8 +1,11 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import ItemsDetail from "../repository/ItemsDetail";
 
+function ItemDetail({ id }) {
 
-function ItemDetail({ item }) {
+  const item = ItemsDetail.getById(id);
+
   return (
     <>
       <Card style={{ width: "18rem" }}>

@@ -1,16 +1,17 @@
 import React from "react";
-import { CardGroup } from "react-bootstrap";
+import { CardGroup, Card } from "react-bootstrap";
 import Item from "../components/Item";
 
 function ItemList({ items }) {
-  
   return (
     <>
-      <CardGroup> 
+      <CardGroup>
         {items &&
           items.map((item) => (
             <>
-              <Item item={item} />
+              <Card key={item.id} style={{ width: "18rem" }}>
+                <Item item={item} />
+              </Card>
             </>
           ))}
       </CardGroup>
