@@ -1,22 +1,35 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
 
-function RBsNavBar({qtyReq}) {
+function NavBar({ qtyReq }) {
   return (
     <>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">My App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#catalogo">Catalogo</Nav.Link>
-              <Nav.Link href="#catalogo">Ofertas</Nav.Link>
-              <Nav.Link href="#catalogo">Contacto</Nav.Link>
+              <LinkContainer to="/">
+                <Nav.Link>My App</Nav.Link>
+              </LinkContainer>
+
+              <NavDropdown title="Categories" id="basic-nav-dropdown">
+                <LinkContainer to="/category/acero">
+                  <NavDropdown.Item>Acero</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/category/aluminio">
+                  <NavDropdown.Item>Aluminio</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/category/plastico">
+                  <NavDropdown.Item>Plástico</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+
+              <Nav.Link>Ofertas</Nav.Link>
+              <Nav.Link>Contacto</Nav.Link>
             </Nav>
-            <CartWidget items={qtyReq}/>            
+            <CartWidget items={qtyReq} />
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -24,4 +37,4 @@ function RBsNavBar({qtyReq}) {
   );
 }
 
-export default RBsNavBar;
+export default NavBar;
