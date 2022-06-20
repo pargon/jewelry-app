@@ -5,6 +5,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemCount from "./components/ItemCount";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartContext from "./context/CartContext";
 
 function App() {
   const [valueCart, setValueCart] = useState();
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+    <CartContext>
       <BrowserRouter>
         <NavBar qtyReq={valueCart} />{" "}
         <Routes>
@@ -25,13 +27,11 @@ function App() {
             path="/category/:id"
             element={<ItemListContainer greeting={"Welcome to Jewelry"} />}
           />
-          <Route
-            path="/item/:id"
-            element={<ItemDetailContainer/>}
-          />          
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
         </Routes>{" "}
       </BrowserRouter>{" "}
       {/* <ItemCount initial={1} stock={10} onAdd={onAdd} />{" "} */}
+    </CartContext>
     </>
   );
 }

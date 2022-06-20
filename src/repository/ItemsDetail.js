@@ -34,6 +34,7 @@ class ItemsDetail {
 
   static getById(id) {
     const val =  this.itemList.find((word) =>{return word.id === id});
+    console.log(val);
     return val
   }
 

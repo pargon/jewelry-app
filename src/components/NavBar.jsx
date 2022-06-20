@@ -1,13 +1,18 @@
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
+import { CardContext } from "../context/CartContext";
 
 function NavBar({ qtyReq }) {
+  const { title, desc } = CardContext;
+  console.log(CardContext);
   return (
     <>
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <div>{'Este es el '+ title}</div>
+
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <LinkContainer to="/">
