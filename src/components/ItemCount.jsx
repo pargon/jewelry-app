@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 
-function ItemCount({ initial, stock, onAdd }) {
+function ItemCount({ initial, stock, onAdd, onViewCart }) {
   const [value, setValue] = useState(initial);
 
   const sum = () => {
@@ -20,6 +20,7 @@ function ItemCount({ initial, stock, onAdd }) {
   const addValueCart = () => {
     if (value <= stock) {
       onAdd(value);
+      onViewCart(true);
     } else {
       alert(`Not Stock Available`);
     }
@@ -27,24 +28,18 @@ function ItemCount({ initial, stock, onAdd }) {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img />
-        <Card.Body>
-          <Card.Title>Product A</Card.Title>
-          <Card.Text>Order Quantity: {value}</Card.Text>
-          <ButtonGroup>
-            <Button onClick={sum} variant="secondary">
-              +
-            </Button>
-            <Button onClick={addValueCart} variant="secondary">
-              Add Cart
-            </Button>
-            <Button onClick={sub} variant="secondary">
-              -
-            </Button>
-          </ButtonGroup>
-        </Card.Body>
-      </Card>
+      <Card.Text>Order Quantity: {value}</Card.Text>
+      <ButtonGroup>
+        <Button onClick={sum} variant="secondary">
+          +
+        </Button>
+        <Button onClick={addValueCart} variant="secondary">
+          Add Cart
+        </Button>
+        <Button onClick={sub} variant="secondary">
+          -
+        </Button>
+      </ButtonGroup>
     </>
   );
 }
