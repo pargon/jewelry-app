@@ -1,25 +1,22 @@
 import React from "react";
-import { useState } from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 
-function ItemCount({ initial, stock, onAdd }) {
-  const [value, setValue] = useState(initial);
-
+function ItemCount({ quantity, setQuantity, stock, onAdd }) {
   const sum = () => {
-    if (value < stock) {
-      setValue(value + 1);
+    if (quantity < stock) {
+      setQuantity(quantity + 1);
     } else {
       alert(`Stock Max:${stock}`);
     }
   };
   const sub = () => {
-    if (value > 0) {
-      setValue(value - 1);
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
     }
   };
   const addValueCart = () => {
-    if (value <= stock) {
-      onAdd(value);
+    if (quantity <= stock) {
+      onAdd();
     } else {
       alert(`Not Stock Available`);
     }
@@ -30,8 +27,7 @@ function ItemCount({ initial, stock, onAdd }) {
       <Card style={{ width: "18rem" }}>
         <Card.Img />
         <Card.Body>
-          <Card.Title>Product A</Card.Title>
-          <Card.Text>Order Quantity: {value}</Card.Text>
+          <Card.Text>Order Quantity: {quantity}</Card.Text>
           <ButtonGroup>
             <Button onClick={sum} variant="secondary">
               +
