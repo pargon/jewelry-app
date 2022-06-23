@@ -10,7 +10,7 @@ function App() {
     <>
       <BrowserRouter>
         <CartContext>
-          <NavBar qtyReq={0} />{" "}
+          <NavBar/>{" "}
           <Routes>
             <Route
               path="/"
