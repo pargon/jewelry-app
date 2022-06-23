@@ -1,6 +1,10 @@
-import React from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-function CartWidget({ items }) {
+function CartWidget() {
+  const { getItemsQty } = useContext(CartContext);
+  const items = getItemsQty();
+
   return (
     <>
       <svg

@@ -8,8 +8,8 @@ import CartContext from "./context/CartContext";
 function App() {
   return (
     <>
-      <CartContext>
-        <BrowserRouter>
+      <BrowserRouter>
+        <CartContext>
           <NavBar qtyReq={0} />{" "}
           <Routes>
             <Route
@@ -22,8 +22,8 @@ function App() {
             />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
           </Routes>{" "}
-        </BrowserRouter>{" "}
-      </CartContext>
+        </CartContext>
+      </BrowserRouter>{" "}
     </>
   );
 }

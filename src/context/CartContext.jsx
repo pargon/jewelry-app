@@ -1,27 +1,33 @@
 import { createContext, useState } from "react";
-export const MyContext = createContext({});
+export const CartContext = createContext();
 
-function CartContext({ children }) {
+function MyProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   const addItem = (item, quantity) => {
-
-    const index = isInCart(item)
+    const index = isInCart(item);
     if (index === -1) {
-      // existe, suma cantidad
-      cart[index].quantity += quantity;
-      setCart(cart);
-    }else{
       // no existe, agrega al final
-      const newItem = [...item, quantity]
-      setCart([...cart], newItem);
+      const newItem = { ...item, quantity };
+      setCart([...cart, newItem]);
+    } else {
+      // existe, suma cantidad
+      const newQty = cart[index].quantity + quantity;;
+
+      if (newQty > item.stock) {
+        alert("Max Stock Over");
+      } else {
+        cart[index].quantity = newQty;
+        setCart(cart);
+      }
     }
+    console.log(cart);
   };
 
   const removeItem = (itemId) => {
     setCart(
       cart.filter((ele) => {
-        return ele.item.id !== itemId;
+        return ele.id !== itemId;
       })
     );
   };
@@ -31,15 +37,20 @@ function CartContext({ children }) {
   };
 
   const isInCart = (item) => {
-    return cart.some((ele) => ele.item.id === item.id);
+    const c = cart.findIndex((ele) => ele.id === item.id);
+    console.log(c);
+    return c;
   };
+
+  const getItemsQty = ()=>{
+    return cart.length;
+  }
+
   return (
-    <>
-      <MyContext.Provider value={{addItem, removeItem, clear}}>
-        {children}
-      </MyContext.Provider>
-    </>
+    <CartContext.Provider value={{ addItem, removeItem, clear, isInCart, getItemsQty }}>
+      {children}
+    </CartContext.Provider>
   );
 }
 
-export default CartContext;
+export default MyProvider;

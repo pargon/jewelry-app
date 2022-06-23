@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { Card } from "react-bootstrap";
-import CartContext from "../context/CartContext";
+import { CartContext } from "../context/CartContext";
 import ItemCount from "./ItemCount";
 
 function ItemDetail({ item }) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const { addItem } = useContext(CartContext);
 
   const onAdd = () => {

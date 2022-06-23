@@ -29,7 +29,7 @@ function NavBar({ qtyReq }) {
               <Nav.Link>Ofertas</Nav.Link>
               <Nav.Link>Contacto</Nav.Link>
             </Nav>
-            <CartWidget items={qtyReq} />
+            <CartWidget/>
           </Navbar.Collapse>
         </Container>
       </Navbar>
