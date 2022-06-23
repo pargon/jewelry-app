@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Card } from "react-bootstrap";
+import { CartContext } from "../context/CartContext";
 import ItemCount from "./ItemCount";
-import Cart from "./Cart";
 
 function ItemDetail({ item }) {
-  const [qty, setQty] = useState(0);
-  const [viewCart, setViewCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const { addItem } = useContext(CartContext);
+
+  const onAdd = () => {
+    alert("Cant. Prd " + quantity);
+    addItem(item, quantity);
+  };
 
   return (
     <>
@@ -15,16 +20,12 @@ function ItemDetail({ item }) {
           <Card.Title>{item.title}</Card.Title>
           <Card.Text>{item.description}</Card.Text>
           <Card.Text>Price: {item.price}</Card.Text>
-          {viewCart ? (
-            <Cart></Cart>
-          ) : (
-            <ItemCount
-              initial={1}
-              stock={10}
-              onAdd={setQty}
-              onViewCart={setViewCart}
-            ></ItemCount>
-          )}
+          <ItemCount
+            quantity={quantity}
+            setQuantity={setQuantity}
+            stock={item.stock}
+            onAdd={onAdd}
+          ></ItemCount>
         </Card.Body>
       </Card>
     </>

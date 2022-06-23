@@ -2,7 +2,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
 
-function NavBar({ qtyReq }) {
+function NavBar() {
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -29,7 +29,7 @@ function NavBar({ qtyReq }) {
               <Nav.Link>Ofertas</Nav.Link>
               <Nav.Link>Contacto</Nav.Link>
             </Nav>
-            <CartWidget items={qtyReq} />
+            <CartWidget/>
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -1,45 +1,54 @@
 import React from "react";
-import { useState } from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 
-function ItemCount({ initial, stock, onAdd, onViewCart }) {
-  const [value, setValue] = useState(initial);
+function ItemCount({ quantity, setQuantity, stock, onAdd }) {
 
   const sum = () => {
-    if (value < stock) {
-      setValue(value + 1);
+    if (quantity < stock) {
+      setQuantity(quantity + 1);
     } else {
       alert(`Stock Max:${stock}`);
     }
   };
+
   const sub = () => {
-    if (value > 0) {
-      setValue(value - 1);
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
     }
   };
+
   const addValueCart = () => {
-    if (value <= stock) {
-      onAdd(value);
-      onViewCart(true);
+    if (quantity === 0) {
+      alert("Must select one");
     } else {
-      alert(`Not Stock Available`);
+      if (quantity <= stock) {
+        setQuantity(quantity);
+        onAdd();
+      } else {
+        alert(`Not Stock Available`);
+      }
     }
   };
 
   return (
     <>
-      <Card.Text>Order Quantity: {value}</Card.Text>
-      <ButtonGroup>
-        <Button onClick={sum} variant="secondary">
-          +
-        </Button>
-        <Button onClick={addValueCart} variant="secondary">
-          Add Cart
-        </Button>
-        <Button onClick={sub} variant="secondary">
-          -
-        </Button>
-      </ButtonGroup>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img />
+        <Card.Body>
+          <Card.Text>Order Quantity: {quantity}</Card.Text>
+          <ButtonGroup>
+            <Button onClick={sum} variant="secondary">
+              +
+            </Button>
+            <Button onClick={addValueCart} variant="secondary">
+              Add Cart
+            </Button>
+            <Button onClick={sub} variant="secondary">
+              -
+            </Button>
+          </ButtonGroup>
+        </Card.Body>
+      </Card>
     </>
   );
 }
