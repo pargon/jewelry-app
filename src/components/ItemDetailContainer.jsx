@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Container, CardGroup } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemDetail from "../components/ItemDetail";
 import ItemsDetail from "../repository/ItemsDetail";
@@ -19,7 +20,7 @@ function ItemDetailContainer() {
     getItem
       .then((res) => {
         const item = ItemsDetail.getById(res);
-        setResult(item);        
+        setResult(item);
       })
       .catch((error) => {
         setError(true);
@@ -32,17 +33,18 @@ function ItemDetailContainer() {
 
   return (
     <>
-      <div>{error && "Problema!!"}</div>
-      <div>{loading && "Cargando........"}</div>
-      <div>
-        {result && (
-          <>
-            <div>
+      <Container fluid>
+        <h1 className="p-5 text-center">Detalle</h1>
+        <div>{error && "Problema!!"}</div>
+        <div>{loading && "Cargando........"}</div>
+        <div>
+          {result && (
+            <>
               <ItemDetail item={result}></ItemDetail>
-            </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
+      </Container>
     </>
   );
 }

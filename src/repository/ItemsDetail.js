@@ -29,6 +29,16 @@ class ItemsDetail {
       categoryDesc: 'Aluminio',
       pictureUrl: "https://www.joyeriadiamond.com/image/cache/catalog/Productos/Relojes/Festina/F16169.2/3042199_1-250x250.jpg",
     },
+    {
+      id: "a4",
+      title: "Producto 4",
+      description: "Reloj Festina F16169/2 hombre Elegante reloj masculino de la colección Festina Sport Chronograph Análogo con movimiento de cuarzo Caja redonda de acero inoxidable de 40 mm de diámetro con fondo blanco e índices en tono azul Posee fecha y cronógrafo de gran precisión (en esferas internas color azul) Corona con protección anti-golpe Malla de acero gamuzado en 22 mm Cierre desplegable con apertura de seguridad mediante pulsadores y traba de seguridad Resistente al agua 100 mts. 1 año de garantía",
+      price: 14000,
+      stock:10,
+      categoryId: 'aluminio',
+      categoryDesc: 'Aluminio',
+      pictureUrl: "https://www.joyeriadiamond.com/image/cache/catalog/Productos/Relojes/Festina/F16169.2/3042199_1-250x250.jpg",
+    },
   ];
 
   static getItems() {

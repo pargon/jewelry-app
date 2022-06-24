@@ -14,19 +14,20 @@ function ItemDetail({ item }) {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={item.pictureUrl} />
+      <Card className="text-center" style={{ width: "18rem" }}>
+        <Card.Img variant="top" src={item.pictureUrl}/>
         <Card.Body>
           <Card.Title>{item.title}</Card.Title>
+          <Card.Subtitle>{`Categoría: ${item.categoryDesc}`}</Card.Subtitle>
           <Card.Text>{item.description}</Card.Text>
           <Card.Text>Price: {item.price}</Card.Text>
-          <ItemCount
+        </Card.Body>
+        <ItemCount
             quantity={quantity}
             setQuantity={setQuantity}
             stock={item.stock}
             onAdd={onAdd}
           ></ItemCount>
-        </Card.Body>
       </Card>
     </>
   );
