@@ -6,6 +6,7 @@ function MyProvider({ children }) {
 
   const addItem = (item, quantity) => {
     const index = isInCart(item);
+
     if (index === -1) {
       // no existe, agrega al final
       const newItem = { ...item, quantity };
@@ -21,7 +22,6 @@ function MyProvider({ children }) {
         setCart(cart);
       }
     }
-    console.log(cart);
   };
 
   const removeItem = (itemId) => {
@@ -38,7 +38,6 @@ function MyProvider({ children }) {
 
   const isInCart = (item) => {
     const c = cart.findIndex((ele) => ele.id === item.id);
-    console.log(c);
     return c;
   };
 
@@ -46,9 +45,24 @@ function MyProvider({ children }) {
     return cart.length;
   };
 
+  const getTotal = () => {
+    const sum = cart.reduce((accumulator, object) => {
+      return accumulator + (object.quantity * object.price);
+    }, 0);
+    return sum;
+  };
+
   return (
     <CartContext.Provider
-      value={{ addItem, removeItem, clear, isInCart, getItemsQty, cart }}
+      value={{
+        addItem,
+        removeItem,
+        clear,
+        isInCart,
+        getItemsQty,
+        cart,
+        getTotal,
+      }}
     >
       {children}
     </CartContext.Provider>

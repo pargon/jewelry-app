@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
 import { BsCart2 } from "react-icons/bs";
 
@@ -10,10 +9,9 @@ function CartWidget() {
 
   return (
     <>
-      <Button variant="black">
-        <BsCart2 />
-        <Link to={"cart"}>{`(${items})`}</Link>        
-      </Button>
+        <Link to={"cart"} className="link-dark" style={{ textDecoration: 'none' }}>
+          <h5><BsCart2 />{`(${items})`}</h5>
+        </Link>
     </>
   );
 }
