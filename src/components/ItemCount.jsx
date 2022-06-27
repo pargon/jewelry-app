@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
 
 function ItemCount({ quantity, setQuantity, stock, onAdd }) {
-
   const sum = () => {
     if (quantity < stock) {
       setQuantity(quantity + 1);
@@ -32,23 +31,18 @@ function ItemCount({ quantity, setQuantity, stock, onAdd }) {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img />
-        <Card.Body>
-          <Card.Text>Order Quantity: {quantity}</Card.Text>
-          <ButtonGroup>
-            <Button onClick={sum} variant="secondary">
-              +
-            </Button>
-            <Button onClick={addValueCart} variant="secondary">
-              Add Cart
-            </Button>
-            <Button onClick={sub} variant="secondary">
-              -
-            </Button>
-          </ButtonGroup>
-        </Card.Body>
-      </Card>
+      <Card.Text>Order Quantity: {quantity}</Card.Text>
+      <ButtonGroup>
+        <Button onClick={sum} variant="secondary">
+          +
+        </Button>
+        <Button onClick={addValueCart} variant="secondary">
+          Add Cart
+        </Button>
+        <Button onClick={sub} variant="secondary">
+          -
+        </Button>
+      </ButtonGroup>
     </>
   );
 }

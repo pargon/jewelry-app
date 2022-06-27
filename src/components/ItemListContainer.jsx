@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Container, CardGroup } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemList from "../components/ItemList";
 import ItemsDetail from "../repository/ItemsDetail";
-
 
 function ItemListContainer({ greeting }) {
   const { id: categoryId } = useParams();
@@ -40,18 +40,20 @@ function ItemListContainer({ greeting }) {
 
   return (
     <>
-      <h1 className="display-3 fw-bold text-shadow">{greeting}</h1>
-      <div>{error && "Problema!!"}</div>
-      <div>{loading && "Cargando........"}</div>
-      <div>
-        {result && (
-          <>
-            <div>
-              <ItemList items={result} />
-            </div>
-          </>
-        )}
-      </div>
+      <Container fluid>
+        <h1 className="p-5 text-center">{greeting}</h1>
+        <div>{error && "Problema!!"}</div>
+        <div>{loading && "Cargando........"}</div>
+        <div>
+          {result && (
+            <>
+              <CardGroup className="text-center">
+                <ItemList items={result} />
+              </CardGroup>
+            </>
+          )}
+        </div>
+      </Container>
     </>
   );
 }
