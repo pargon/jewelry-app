@@ -8,7 +8,6 @@ function ItemDetail({ item }) {
   const { addItem } = useContext(CartContext);
 
   const onAdd = () => {
-    alert("Cant. Prd " + quantity);
     addItem(item, quantity);
   };
 

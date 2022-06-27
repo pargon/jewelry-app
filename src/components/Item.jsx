@@ -5,7 +5,13 @@ import { Link } from "react-router-dom";
 function Item({ item }) {
   return (
     <>
-      <Card.Img className="img-fluid" variant="top" src={item.pictureUrl} />
+      <Card.Img
+        variant="center"
+        className="mx-auto d-block"
+        src={item.pictureUrl}
+        alt="Shopping item"
+        style={{ width: "18rem" }}
+      />
       <Card.Body>
         <Card.Title>{item.title}</Card.Title>
         <Card.Subtitle>{`Categoría: ${item.categoryDesc}`}</Card.Subtitle>

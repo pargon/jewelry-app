@@ -7,7 +7,7 @@ function ItemList({ items }) {
     <>
         {items &&
           items.map((item) => (
-            <Card className="text-center" key={item.id} style={{ width: "18rem" }} >
+            <Card className="text-center" key={item.id}>
               <Item item={item} />
             </Card>
           ))}

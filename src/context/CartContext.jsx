@@ -12,7 +12,7 @@ function MyProvider({ children }) {
       setCart([...cart, newItem]);
     } else {
       // existe, suma cantidad
-      const newQty = cart[index].quantity + quantity;;
+      const newQty = cart[index].quantity + quantity;
 
       if (newQty > item.stock) {
         alert("Max Stock Over");
@@ -42,12 +42,14 @@ function MyProvider({ children }) {
     return c;
   };
 
-  const getItemsQty = ()=>{
+  const getItemsQty = () => {
     return cart.length;
-  }
+  };
 
   return (
-    <CartContext.Provider value={{ addItem, removeItem, clear, isInCart, getItemsQty }}>
+    <CartContext.Provider
+      value={{ addItem, removeItem, clear, isInCart, getItemsQty, cart }}
+    >
       {children}
     </CartContext.Provider>
   );

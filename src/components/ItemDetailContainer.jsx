@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, CardGroup } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemDetail from "../components/ItemDetail";
 import ItemsDetail from "../repository/ItemsDetail";
