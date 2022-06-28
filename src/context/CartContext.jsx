@@ -6,13 +6,14 @@ function MyProvider({ children }) {
 
   const addItem = (item, quantity) => {
     const index = isInCart(item);
+
     if (index === -1) {
       // no existe, agrega al final
       const newItem = { ...item, quantity };
       setCart([...cart, newItem]);
     } else {
       // existe, suma cantidad
-      const newQty = cart[index].quantity + quantity;;
+      const newQty = cart[index].quantity + quantity;
 
       if (newQty > item.stock) {
         alert("Max Stock Over");
@@ -21,7 +22,6 @@ function MyProvider({ children }) {
         setCart(cart);
       }
     }
-    console.log(cart);
   };
 
   const removeItem = (itemId) => {
@@ -38,16 +38,35 @@ function MyProvider({ children }) {
 
   const isInCart = (item) => {
     const c = cart.findIndex((ele) => ele.id === item.id);
-    console.log(c);
     return c;
   };
 
-  const getItemsQty = ()=>{
-    return cart.length;
-  }
+  const getItemsQty = () => {
+    const sum = cart.reduce((accumulator, object) => {
+      return accumulator + (object.quantity);
+    }, 0);
+    return sum;
+  };
+
+  const getTotal = () => {
+    const sum = cart.reduce((accumulator, object) => {
+      return accumulator + (object.quantity * object.price);
+    }, 0);
+    return sum;
+  };
 
   return (
-    <CartContext.Provider value={{ addItem, removeItem, clear, isInCart, getItemsQty }}>
+    <CartContext.Provider
+      value={{
+        addItem,
+        removeItem,
+        clear,
+        isInCart,
+        getItemsQty,
+        cart,
+        getTotal,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

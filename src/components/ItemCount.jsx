@@ -1,5 +1,5 @@
-import React from "react";
 import { Card, Button, ButtonGroup } from "react-bootstrap";
+import FinishBuy from "./FinishBuy";
 
 function ItemCount({ quantity, setQuantity, stock, onAdd }) {
   const sum = () => {
@@ -16,12 +16,16 @@ function ItemCount({ quantity, setQuantity, stock, onAdd }) {
     }
   };
 
+  let isFinish = true;
+
   const addValueCart = () => {
     if (quantity === 0) {
       alert("Must select one");
     } else {
       if (quantity <= stock) {
         setQuantity(quantity);
+        isFinish = true;
+
         onAdd();
       } else {
         alert(`Not Stock Available`);
@@ -43,6 +47,8 @@ function ItemCount({ quantity, setQuantity, stock, onAdd }) {
           -
         </Button>
       </ButtonGroup>
+      <FinishBuy condition={isFinish}></FinishBuy>
+
     </>
   );
 }

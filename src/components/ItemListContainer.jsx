@@ -42,8 +42,8 @@ function ItemListContainer({ greeting }) {
     <>
       <Container fluid>
         <h1 className="p-5 text-center">{greeting}</h1>
-        <div>{error && "Problema!!"}</div>
-        <div>{loading && "Cargando........"}</div>
+        <div>{error && "Problem!!"}</div>
+        <div>{loading && "Loading........"}</div>
         <div>
           {result && (
             <>
