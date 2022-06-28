@@ -1,8 +1,10 @@
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
+import CategoryList from "../repository/Categories";
 
 function NavBar() {
+  const categories = CategoryList.getAll();
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -15,21 +17,17 @@ function NavBar() {
               </LinkContainer>
 
               <NavDropdown title="Categories" id="basic-nav-dropdown">
-                <LinkContainer to="/category/acero">
-                  <NavDropdown.Item>Acero</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/category/aluminio">
-                  <NavDropdown.Item>Aluminio</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/category/plastico">
-                  <NavDropdown.Item>Plástico</NavDropdown.Item>
-                </LinkContainer>
+                {categories &&
+                  categories.map((item) => (
+                    <LinkContainer to={"/category/" + item.id} key={item.id}>
+                      <NavDropdown.Item>{item.description}</NavDropdown.Item>
+                    </LinkContainer>
+                  ))}
               </NavDropdown>
 
-              <Nav.Link>Ofertas</Nav.Link>
-              <Nav.Link>Contacto</Nav.Link>
+              <Nav.Link>Contact</Nav.Link>
             </Nav>
-            <CartWidget/>
+            <CartWidget />
           </Navbar.Collapse>
         </Container>
       </Navbar>

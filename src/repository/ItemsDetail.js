@@ -16,7 +16,7 @@ class ItemsDetail {
       price: 26495,
       stock: 10,
       categoryId: 'plastico',
-      categoryDesc: 'P  lastico',
+      categoryDesc: 'Plastico',
       pictureUrl: "https://www.joyeriadiamond.com/image/cache/catalog/SO27M105%2011-550x550.png",
     },
     {

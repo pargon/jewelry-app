@@ -42,7 +42,10 @@ function MyProvider({ children }) {
   };
 
   const getItemsQty = () => {
-    return cart.length;
+    const sum = cart.reduce((accumulator, object) => {
+      return accumulator + (object.quantity);
+    }, 0);
+    return sum;
   };
 
   const getTotal = () => {

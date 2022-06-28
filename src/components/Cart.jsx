@@ -8,11 +8,7 @@ function Cart() {
   const { cart, getItemsQty, removeItem, getTotal } = useContext(CartContext);
   const itemsCart = getItemsQty();
   const cartTotal = getTotal();
-  const textCartQty =
-    itemsCart > 0
-      ? `Ud. tiene ${itemsCart} artículos en su carrito`
-      : `El carrito está vacío`;
-
+  
   return (
     <>
       <section className="h-100 h-custom">
@@ -31,8 +27,7 @@ function Cart() {
                         </Link>
                         <div className="d-flex justify-content-between align-items-center mb-4">
                           <div>
-                            <p className="mb-1">Carrito de compras</p>
-                            <p className="mb-0">{textCartQty}</p>
+                            <p className="mb-0">{(itemsCart > 0)? `Cart items: ${itemsCart}`: `The cart is empty`}</p>
                           </div>
                         </div>
                         <div>
