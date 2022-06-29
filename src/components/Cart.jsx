@@ -66,7 +66,7 @@ function Cart() {
                                     </div>
                                     <Button
                                       variant="black"
-                                      onClick={() => removeItem(this.key)}
+                                      onClick={() => removeItem(cartItem.id)}
                                     >
                                       <BsTrash />
                                     </Button>
