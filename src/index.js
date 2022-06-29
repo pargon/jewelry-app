@@ -6,8 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { initializeApp } from "firebase/app";
 
-console.log(process.env.FIREBASE_APIKEY);
-
 initializeApp({
   apiKey: "AIzaSyBOcoNTT3Ijcq0yiADP4l-8Ogb9QptmFX4",
   authDomain: "coder-ecomerce.firebaseapp.com",

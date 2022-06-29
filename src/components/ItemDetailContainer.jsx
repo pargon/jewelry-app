@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemDetail from "../components/ItemDetail";
-import ItemsDetail from "../repository/ItemsDetail";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -11,16 +11,16 @@ function ItemDetailContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getItem = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(id);
-      }, 2000);
-    });
+    const db = getFirestore();
+    const table = "items";
+    const colItems = doc(db, table, id);
 
-    getItem
-      .then((res) => {
-        const item = ItemsDetail.getById(res);
-        setResult(item);
+    const data = getDoc(colItems);
+
+    data
+      .then((doc) => {
+        console.log({ id: doc.id, ...doc.data() });
+        setResult({ id: doc.id, ...doc.data() });
       })
       .catch((error) => {
         setError(true);

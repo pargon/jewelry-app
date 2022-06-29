@@ -6,18 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartContext from "./context/CartContext";
 import Cart from "./components/Cart";
 
-import FirebaseQuery from "./firebase/FirebaseQuery";
-
 function App() {
   return (
     <>
-      <p>entrando</p>
-      <FirebaseQuery></FirebaseQuery>
-
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <CartContext>
-          <NavBar />{" "} 
-       <Routes>
+          <NavBar />{" "}
+          <Routes>
             <Route
               path="/"
               element={<ItemListContainer greeting={"Welcome to Jewelry"} />}
@@ -30,7 +25,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
           </Routes>{" "}
         </CartContext>
-      </BrowserRouter>{" "} */}
+      </BrowserRouter>{" "}
     </>
   );
 }

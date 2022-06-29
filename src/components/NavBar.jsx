@@ -1,10 +1,29 @@
+import { useEffect, useState } from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
-import CategoryList from "../repository/Categories";
+import { getDocs, collection, getFirestore } from "firebase/firestore";
 
 function NavBar() {
-  const categories = CategoryList.getAll();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const table = "categories";
+    const colItems = collection(db, table);
+    // todo
+    const data = getDocs(colItems);
+
+    data.then((res) => {
+      setCategories(
+        res.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+      );
+    });
+  }, []);
+
   return (
     <>
       <Navbar bg="light" expand="lg">

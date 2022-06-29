@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { Container, CardGroup } from "react-bootstrap";
 import { useParams } from "react-router";
 import ItemList from "../components/ItemList";
-import ItemsDetail from "../repository/ItemsDetail";
+import {
+  where,
+  query,
+  getFirestore,
+  getDocs,
+  collection,
+} from "firebase/firestore";
 
 function ItemListContainer({ greeting }) {
   const { id: categoryId } = useParams();
@@ -11,23 +17,23 @@ function ItemListContainer({ greeting }) {
   const [result, setResult] = useState();
 
   useEffect(() => {
-    let itemList = [];
+    const db = getFirestore();
+    const table = "items";
+    let colItems;
     if (categoryId) {
-      itemList = ItemsDetail.getByCategory(categoryId);
+      colItems = query(
+        collection(db, table),
+        where("categoryId", "==", categoryId)
+      );
     } else {
-      itemList = ItemsDetail.getItems();
+      colItems = collection(db, table);
     }
-
-    const data = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(itemList);
-        // rej('mallll');
-      }, 2000);
-    });
+    // todo
+    const data = getDocs(colItems);
 
     data
       .then((res) => {
-        setResult(res);
+        setResult(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       })
       .catch((error) => {
         setError(true);
