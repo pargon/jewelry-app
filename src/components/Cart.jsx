@@ -33,8 +33,8 @@ function Cart() {
                         <div>
                           {cart &&
                             cart.map((cartItem) => (
-                              <Card className="mb-3">
-                                <Card.Body key={cartItem.id}>
+                              <Card className="mb-3" key={cartItem.id}>
+                                <Card.Body >
                                   <div className="d-flex justify-content-between">
                                     <div className="d-flex flex-row align-items-center">
                                       <div>

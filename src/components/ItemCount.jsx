@@ -1,5 +1,6 @@
 import { Card, Button, ButtonGroup } from "react-bootstrap";
-import FinishBuy from "./FinishBuy";
+import { Link } from "react-router-dom";
+
 
 function ItemCount({ quantity, setQuantity, stock, onAdd }) {
   const sum = () => {
@@ -47,8 +48,9 @@ function ItemCount({ quantity, setQuantity, stock, onAdd }) {
           -
         </Button>
       </ButtonGroup>
-      <FinishBuy condition={isFinish}></FinishBuy>
-
+      <Button variant="dark" size="lg">
+        <Link to={"../cart/"}>Finish</Link>
+      </Button>
     </>
   );
 }

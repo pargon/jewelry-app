@@ -54,7 +54,7 @@ function ItemListContainer({ greeting }) {
           {result && (
             <>
               <CardGroup className="text-center">
-                <ItemList items={result} />
+                <ItemList items={result} category={categoryId} />
               </CardGroup>
             </>
           )}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 function Item({ item }) {
   return (
@@ -17,11 +16,6 @@ function Item({ item }) {
         <Card.Subtitle>{`Category: ${item.categoryDesc}`}</Card.Subtitle>
         <Card.Text>Price: {item.price}</Card.Text>
       </Card.Body>
-      <Card.Footer>
-        <small className="text-muted">
-          <Link to={"item/" + item.id}>Item Detail</Link>
-        </small>
-      </Card.Footer>
     </>
   );
 }
