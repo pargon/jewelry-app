@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
-import { BsTrash, BsArrowLeft } from "react-icons/bs";
+import { BsTrash, BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Cart() {
   const { cart, getItemsQty, removeItem, getTotal } = useContext(CartContext);
   const itemsCart = getItemsQty();
   const cartTotal = getTotal();
-  
+
   return (
     <>
       <section className="h-100 h-custom">
@@ -18,7 +18,7 @@ function Cart() {
               <Card>
                 <Card.Body className="p-4">
                   <Row>
-                    <Col className="col-lg-9" >
+                    <Col className="col-lg-9">
                       <div className="black">
                         <Link to="/" style={{ textDecoration: "none" }}>
                           <h5 className="mb-3 text-body">
@@ -27,14 +27,18 @@ function Cart() {
                         </Link>
                         <div className="d-flex justify-content-between align-items-center mb-4">
                           <div>
-                            <p className="mb-0">{(itemsCart > 0)? `Cart items: ${itemsCart}`: `The cart is empty`}</p>
+                            <p className="mb-0">
+                              {itemsCart > 0
+                                ? `Cart items: ${itemsCart}`
+                                : `The cart is empty`}
+                            </p>
                           </div>
                         </div>
                         <div>
                           {cart &&
                             cart.map((cartItem) => (
                               <Card className="mb-3" key={cartItem.id}>
-                                <Card.Body >
+                                <Card.Body>
                                   <div className="d-flex justify-content-between">
                                     <div className="d-flex flex-row align-items-center">
                                       <div>
@@ -84,6 +88,20 @@ function Cart() {
                             <p className="mb-2">Total</p>
                             <p className="mb-2">${cartTotal}</p>
                           </div>
+                          <Button className="btn btn-info btn-block btn-lg">
+                            <Link to={"../checkout"} style={{ textDecoration: "none" }}>
+                              <div className="d-flex justify-content-between">
+                                <h5 className="mb-3 text-body">
+                                  <span>${cartTotal} </span>
+
+                                  <span>
+                                    Checkout
+                                    <BsArrowRight />
+                                  </span>
+                                </h5>
+                              </div>
+                            </Link>
+                          </Button>
                         </Card.Body>
                       </Card>
                     </Col>
