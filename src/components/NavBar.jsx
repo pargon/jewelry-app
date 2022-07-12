@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import CartWidget from "./CartWidget";
 import { getDocs, collection, getFirestore } from "firebase/firestore";
+import logo from "../images/logo350x200.png";
 
 function NavBar() {
   const [categories, setCategories] = useState([]);
@@ -32,9 +33,19 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <LinkContainer to="/">
-                <Nav.Link>My App</Nav.Link>
+                <Nav.Link>
+                  <img
+                    src={logo}
+                    alt='logo'
+                    style={{
+                      minWidth: "20%",
+                      maxWidth: 80,
+                      minHeight: "10%",
+                      maxHeight: 70,
+                    }}
+                  />
+                </Nav.Link>
               </LinkContainer>
-
               <NavDropdown title="Categories" id="basic-nav-dropdown">
                 {categories &&
                   categories.map((item) => (
@@ -43,7 +54,6 @@ function NavBar() {
                     </LinkContainer>
                   ))}
               </NavDropdown>
-
               <Nav.Link>Contact</Nav.Link>
             </Nav>
             <CartWidget />

@@ -1,8 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 export const CartContext = createContext();
 
 function MyProvider({ children }) {
   const [cart, setCart] = useState([]);
+console.log('entra');
 
   const addItem = (item, quantity) => {
     const index = isInCart(item);
@@ -14,6 +15,7 @@ function MyProvider({ children }) {
     } else {
       // existe, suma cantidad
       const newQty = cart[index].quantity + quantity;
+      localStorage.setItem("cart", JSON.stringify(cart));
 
       if (newQty > item.stock) {
         alert("Max Stock Over");
@@ -43,17 +45,24 @@ function MyProvider({ children }) {
 
   const getItemsQty = () => {
     const sum = cart.reduce((accumulator, object) => {
-      return accumulator + (object.quantity);
+      return accumulator + object.quantity;
     }, 0);
     return sum;
   };
 
   const getTotal = () => {
     const sum = cart.reduce((accumulator, object) => {
-      return accumulator + (object.quantity * object.price);
+      return accumulator + object.quantity * object.price;
     }, 0);
     return sum;
   };
+
+  // console.log("getitem:" + JSON.parse(localStorage.getItem("cart")));
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("setitem:" + JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <CartContext.Provider
