@@ -39,9 +39,9 @@ function NavBar() {
                     alt='logo'
                     style={{
                       minWidth: "20%",
-                      maxWidth: 80,
+                      maxWidth: 70,
                       minHeight: "10%",
-                      maxHeight: 70,
+                      maxHeight: 60,
                     }}
                   />
                 </Nav.Link>

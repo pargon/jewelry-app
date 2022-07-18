@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { BsCart2 } from "react-icons/bs";
 
 function CartWidget() {
   const { getItemsQty } = useContext(CartContext);
-  const items = getItemsQty();
+  let items = 0;
+  items = getItemsQty();
+
+  console.log("cart it " + items);
 
   if (items > 0) {
     return (
