@@ -1,11 +1,19 @@
 import { useContext } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  Col,
+  Container,
+  Row,
+} from "react-bootstrap";
 import { CartContext } from "../context/CartContext";
-import { BsTrash, BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { BsTrash, BsArrowLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Cart() {
-  const { cart, getItemsQty, removeItem, getTotal } = useContext(CartContext);
+  const { cart, getItemsQty, removeItem, getTotal, clear } =
+    useContext(CartContext);
   const itemsCart = getItemsQty();
   const cartTotal = getTotal();
 
@@ -18,7 +26,7 @@ function Cart() {
               <Card>
                 <Card.Body className="p-4">
                   <Row>
-                    <Col className="col-lg-9">
+                    <Col className="col-lg-8">
                       <div className="black">
                         <Link to="/" style={{ textDecoration: "none" }}>
                           <h5 className="mb-3 text-body">
@@ -81,29 +89,43 @@ function Cart() {
                         </div>
                       </div>
                     </Col>
-                    <Col className="col-lg-3">
-                      <Card className="bg-primary text-white rounded-3">
-                        <Card.Body className="p-4">
-                          <div className="d-flex justify-content-between mb-4">
-                            <p className="mb-2">Total</p>
-                            <p className="mb-2">${cartTotal}</p>
-                          </div>
-                          <Button className="btn btn-info btn-block btn-lg">
-                            <Link to={"../checkout"} style={{ textDecoration: "none" }}>
-                              <div className="d-flex justify-content-between">
-                                <h5 className="mb-3 text-body">
-                                  <span>${cartTotal} </span>
-
-                                  <span>
-                                    Checkout
-                                    <BsArrowRight />
-                                  </span>
-                                </h5>
-                              </div>
-                            </Link>
-                          </Button>
-                        </Card.Body>
-                      </Card>
+                    <Col className="col-lg-4">
+                      {cartTotal > 0 && (
+                        <Card className="bg-primary h-100 text-white rounded-3">
+                          <Card.Body className="p-4">
+                            <div className="d-flex justify-content-between mb-4">
+                              <p className="mb-2">Total</p>
+                              <p className="mb-2">${cartTotal}</p>
+                            </div>
+                            <ButtonGroup className="w-100">
+                              <Button
+                                className="btn btn-info btn-light btn-block btn-lg"
+                                onClick={() => clear()}
+                              >
+                                <Link to="/" style={{ textDecoration: "none" }}>
+                                  <div className="d-flex justify-content-center">
+                                    <h5 className="text-body">
+                                      <span>Clear</span>
+                                    </h5>
+                                  </div>
+                                </Link>
+                              </Button>
+                              <Button className="btn btn-info btn-block btn-lg">
+                                <Link
+                                  to={"../checkout"}
+                                  style={{ textDecoration: "none" }}
+                                >
+                                  <div className="d-flex justify-content-center">
+                                    <h5 className="text-body">
+                                      <span>Checkout</span>
+                                    </h5>
+                                  </div>
+                                </Link>
+                              </Button>
+                            </ButtonGroup>
+                          </Card.Body>
+                        </Card>
+                      )}
                     </Col>
                   </Row>
                 </Card.Body>

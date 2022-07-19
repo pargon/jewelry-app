@@ -33,7 +33,7 @@ function ItemDetailContainer() {
   return (
     <>
       <Container fluid>
-        <h1 className="p-5 text-center">Detalle</h1>
+        <h1 className="p-3 text-center">Item Detail</h1>
         <div>{error && "Problem!!"}</div>
         <div>{loading && "Loading........"}</div>
         <div>
