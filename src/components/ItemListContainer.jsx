@@ -47,7 +47,7 @@ function ItemListContainer({ greeting }) {
   return (
     <>
       <Container fluid>
-        <h1 className="p-5 text-center">{greeting}</h1>
+        <h1 className="p-3 text-center">{greeting}</h1>
         <div>{error && "Problem!!"}</div>
         <div>{loading && "Loading........"}</div>
         <div>

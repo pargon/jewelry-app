@@ -36,7 +36,7 @@ function NavBar() {
                 <Nav.Link>
                   <img
                     src={logo}
-                    alt='logo'
+                    alt="logo"
                     style={{
                       minWidth: "20%",
                       maxWidth: 70,

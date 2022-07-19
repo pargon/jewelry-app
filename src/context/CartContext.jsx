@@ -7,24 +7,20 @@ function MyProvider({ children }) {
 
   const addItem = (item, quantity) => {
     const index = isInCart(item);
-    console.log("addItem " + quantity);
+    let newQty = quantity;
 
-    if (index === -1) {
-      // no existe, agrega al final
-      const newItem = { ...item, quantity };
-      setCart([...cart, newItem]);
-    } else {
+    if (index !== -1) {
       // existe, suma cantidad
-      const newQty = cart[index].quantity + quantity;
-      localStorage.setItem("cart", JSON.stringify(cart));
-      console.log("update " + JSON.stringify(cart));
+      newQty += cart[index].quantity;
+      cart.splice(index, 1);
+    }
 
-      if (newQty > item.stock) {
-        alert("Max Stock Over");
-      } else {
-        cart[index].quantity = newQty;
-        setCart(cart);
-      }
+    if (newQty > item.stock) {
+      alert("Max Stock Over");
+    } else {
+      // agrega al final
+      const newItem = { ...item, quantity: newQty };
+      setCart([...cart, newItem]);
     }
   };
 
