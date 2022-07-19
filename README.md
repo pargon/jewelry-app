@@ -21,6 +21,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Open [https://coder-ecomerce.web.app/](https://coder-ecomerce.web.app) to view it in your browser.
 
+## App Demo
+
+![](https://github.com/pargon/jewelry-gparra/blob/main/public/jewelry-gparra.gif)
+
 ## External Library
 * `firebase: ^9.8.4`: necesary for deploy and data base
 * `react-bootstrap: ^2.4.0`: necesary for bootstrap
