@@ -1,6 +1,12 @@
 # Jewelry by Gonzalo Parra
 This is a project for Coder
 
+## Install dependencies npm
+
+In the project directory, you can run:
+
+### `npm install`
+
 ## Init project
 
 In the project directory, you can run:
